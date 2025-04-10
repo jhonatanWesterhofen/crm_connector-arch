@@ -57,7 +57,7 @@ public class HubSpotOAuthService {
 
         String encriptCde = EncryptUtil.textEncrypt(code, hubspotProperties.getSecret());
 
-        logger.error("[INFO] - Recebimento do código callback " + encriptCde);
+        logger.info("[INFO] - Recebimento do código callback " + encriptCde);
 
         if (Utils.isNull(code)) {
             return ResponseEntity.ok().build();
@@ -75,7 +75,7 @@ public class HubSpotOAuthService {
 
             }
 
-            logger.error("[INFO] - Processo de callback realizado com sucesso ");
+            logger.info("[INFO] - Processo de callback realizado com sucesso ");
 
             return ResponseEntity.ok(token);
 

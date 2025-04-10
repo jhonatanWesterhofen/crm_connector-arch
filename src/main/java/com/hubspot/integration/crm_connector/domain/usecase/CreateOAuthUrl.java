@@ -1,6 +1,6 @@
 package com.hubspot.integration.crm_connector.domain.usecase;
 
-import com.hubspot.integration.crm_connector.domain.repositories.IOAuth;
+import com.hubspot.integration.crm_connector.domain.repositories.IOAuthRepository;
 
 /**
  *
@@ -8,9 +8,9 @@ import com.hubspot.integration.crm_connector.domain.repositories.IOAuth;
  */
 public class CreateOAuthUrl {
 
-    private IOAuth authRepository;
+    private IOAuthRepository authRepository;
 
-    public CreateOAuthUrl(IOAuth authRepository) {
+    public CreateOAuthUrl(IOAuthRepository authRepository) {
         this.authRepository = authRepository;
     }
 

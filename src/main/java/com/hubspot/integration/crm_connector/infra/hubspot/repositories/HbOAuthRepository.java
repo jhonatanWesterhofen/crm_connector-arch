@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hubspot.integration.crm_connector.domain.entities.dto.TokenDTO;
 import com.hubspot.integration.crm_connector.domain.entities.enums.EnumScope;
-import com.hubspot.integration.crm_connector.domain.repositories.IOAuth;
+import com.hubspot.integration.crm_connector.domain.repositories.IOAuthRepository;
 import com.hubspot.integration.crm_connector.infra.hubspot.dto.HbProperties;
 import com.hubspot.integration.crm_connector.infra.hubspot.dto.HbTokenResponseDTO;
 import com.hubspot.integration.crm_connector.infra.hubspot.mapper.TokenResponseMapper;
@@ -20,7 +20,7 @@ import com.hubspot.integration.crm_connector.infra.hubspot.rest.OauthHubSpotRest
  */
 @Repository
 @Component
-public class HbOAuthRepository implements IOAuth {
+public class HbOAuthRepository implements IOAuthRepository {
 
     protected HbProperties hubspotProperties;
     protected OauthHubSpotRestClient hubSpotRestClient;

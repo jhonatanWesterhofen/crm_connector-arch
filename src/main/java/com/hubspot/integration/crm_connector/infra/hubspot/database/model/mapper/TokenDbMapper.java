@@ -8,7 +8,7 @@ import com.hubspot.integration.crm_connector.infra.hubspot.database.model.TokenR
  *
  * @author Jhonatan
  */
-public class TokenRequestMapper {
+public class TokenDbMapper {
 
     public static TokenRequest toEntity(TokenBO tokenBO) {
 

@@ -6,7 +6,7 @@ import com.hubspot.integration.crm_connector.domain.entities.dto.ContactDTO;
  *
  * @author Jhonatan
  */
-public interface IConnect {
+public interface IConnectRepository {
 
     ContactDTO createContact(ContactDTO contactDTO);
 

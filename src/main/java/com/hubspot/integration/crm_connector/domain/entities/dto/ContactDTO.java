@@ -1,5 +1,7 @@
 package com.hubspot.integration.crm_connector.domain.entities.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +22,6 @@ public class ContactDTO {
     private String lifecyclestage;
     private boolean archived;
     private String externalId;
+    private List<ContactEventDTO> event;
 
 }

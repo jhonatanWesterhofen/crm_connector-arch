@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hubspot.integration.crm_connector.domain.entities.dto.ContactDTO;
+import com.hubspot.integration.crm_connector.service.CrmService;
 
 /**
  *
@@ -16,10 +17,14 @@ import com.hubspot.integration.crm_connector.domain.entities.dto.ContactDTO;
 @RequestMapping("/crm")
 public class CrmController {
 
-    @PostMapping("/contacts")
-    public ResponseEntity<Void> createContact(@RequestBody ContactDTO dto) {
+    private final CrmService crmService;
 
-        return ResponseEntity.ok().build();
+    public CrmController(CrmService crmService) {
+        this.crmService = crmService;
     }
 
+    @PostMapping("/contacts")
+    public ResponseEntity<ContactDTO> createContact(@RequestBody ContactDTO dto) {
+        return crmService.createContact(dto);
+    }
 }

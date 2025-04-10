@@ -2,14 +2,16 @@ package com.hubspot.integration.crm_connector.infra.hubspot.repositories;
 
 import org.springframework.stereotype.Repository;
 
+import com.hubspot.integration.crm_connector.domain.Utils.exception.ConnectorException;
 import com.hubspot.integration.crm_connector.domain.entities.dto.ContactDTO;
 import com.hubspot.integration.crm_connector.domain.entities.dto.ContactResponseDTO;
+import com.hubspot.integration.crm_connector.domain.entities.enums.EnumErrorCode;
 import com.hubspot.integration.crm_connector.domain.entities.enums.EnumScope;
-import com.hubspot.integration.crm_connector.domain.repositories.IConnect;
-import com.hubspot.integration.crm_connector.infra.hubspot.database.model.mapper.ContactResponseMapper;
+import com.hubspot.integration.crm_connector.domain.repositories.IConnectRepository;
 import com.hubspot.integration.crm_connector.infra.hubspot.dto.HbPropertiesContactDTO;
 import com.hubspot.integration.crm_connector.infra.hubspot.dto.HubspotContactResponseDTO;
 import com.hubspot.integration.crm_connector.infra.hubspot.mapper.ConnectResponseMapper;
+import com.hubspot.integration.crm_connector.infra.hubspot.mapper.ContactResponseMapper;
 import com.hubspot.integration.crm_connector.infra.hubspot.rest.CrmConnectRestClient;
 import com.hubspot.integration.crm_connector.service.TokenService;
 
@@ -18,7 +20,7 @@ import com.hubspot.integration.crm_connector.service.TokenService;
  * @author Jhonatan
  */
 @Repository
-public class HbConnectRepository implements IConnect {
+public class HbConnectRepository implements IConnectRepository {
 
     private CrmConnectRestClient connectRestClient;
     private TokenService tokenService;
@@ -50,19 +52,19 @@ public class HbConnectRepository implements IConnect {
                 if (isRateLimitException(e)) {
                     retryCount++;
                     if (retryCount > maxRetries) {
-                        throw new RuntimeException("Limite de tentativas excedido após erro 429", e);
+                        throw new ConnectorException(EnumErrorCode.ERRO_TENTATIVAS_EXCEDIDAS);
                     }
 
                     try {
                         Thread.sleep(backoff);
                     } catch (InterruptedException ie) {
                         Thread.currentThread().interrupt();
-                        throw new RuntimeException("Thread interrompida durante backoff", ie);
+                        throw new ConnectorException(EnumErrorCode.ERRO_GENERICO);
                     }
 
                     backoff *= 2;
                 } else {
-                    throw new RuntimeException("Erro ao criar contato", e);
+                    throw new ConnectorException(EnumErrorCode.ERRO_INTEGRACAO_HUBSPOT);
                 }
             }
         }

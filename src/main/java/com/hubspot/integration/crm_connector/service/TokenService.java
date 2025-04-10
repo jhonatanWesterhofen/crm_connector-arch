@@ -1,10 +1,12 @@
 package com.hubspot.integration.crm_connector.service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import org.springframework.stereotype.Service;
 
+import com.hubspot.integration.crm_connector.domain.Utils.StringUtil;
 import com.hubspot.integration.crm_connector.domain.Utils.Utils;
 import com.hubspot.integration.crm_connector.domain.entities.dto.TokenDTO;
 import com.hubspot.integration.crm_connector.domain.entities.enums.EnumScope;
@@ -37,14 +39,16 @@ public class TokenService {
 
         if (Utils.isNull(token) || localDateTime.isAfter(toLocalDateTime(token.getExpiresIn()))) {
 
-            return refreshToken.execute(token.getRefreshToken()).getAccessToken();
+            String newToken = refreshToken.execute(token.getRefreshToken()).getAccessToken();
+
+            return StringUtil.bearerToken(newToken);
         }
 
-        return token.getAccessToken();
+        return StringUtil.bearerToken(token.getAccessToken());
     }
 
     public LocalDateTime toLocalDateTime(String date) {
-        String isoDate = "2025-04-08T22:07:20.700";
-        return LocalDateTime.parse(isoDate);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return LocalDateTime.parse(date, formatter);
     }
 }

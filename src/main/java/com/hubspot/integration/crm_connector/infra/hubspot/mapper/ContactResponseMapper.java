@@ -1,4 +1,4 @@
-package com.hubspot.integration.crm_connector.infra.hubspot.database.model.mapper;
+package com.hubspot.integration.crm_connector.infra.hubspot.mapper;
 
 import com.hubspot.integration.crm_connector.domain.Utils.Utils;
 import com.hubspot.integration.crm_connector.domain.entities.dto.ContactPropsResponseDTO;

@@ -1,7 +1,7 @@
 package com.hubspot.integration.crm_connector.domain.usecase;
 
 import com.hubspot.integration.crm_connector.domain.entities.dto.TokenDTO;
-import com.hubspot.integration.crm_connector.domain.repositories.IOAuth;
+import com.hubspot.integration.crm_connector.domain.repositories.IOAuthRepository;
 
 /**
  *
@@ -9,9 +9,9 @@ import com.hubspot.integration.crm_connector.domain.repositories.IOAuth;
  */
 public class RefreshToken {
 
-    private IOAuth authRepository;
+    private IOAuthRepository authRepository;
 
-    public RefreshToken(IOAuth authRepository) {
+    public RefreshToken(IOAuthRepository authRepository) {
         this.authRepository = authRepository;
     }
 

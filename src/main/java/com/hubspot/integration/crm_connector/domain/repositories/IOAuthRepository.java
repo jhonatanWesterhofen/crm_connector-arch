@@ -6,7 +6,7 @@ import com.hubspot.integration.crm_connector.domain.entities.dto.TokenDTO;
  *
  * @author Jhonatan
  */
-public interface IOAuth {
+public interface IOAuthRepository {
 
     String createAuthorizationUrl();
 

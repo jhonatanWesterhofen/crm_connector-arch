@@ -9,7 +9,7 @@ import com.hubspot.integration.crm_connector.domain.entities.bo.TokenBO;
 import com.hubspot.integration.crm_connector.domain.entities.enums.EnumScope;
 import com.hubspot.integration.crm_connector.domain.repositories.ITokenRepository;
 import com.hubspot.integration.crm_connector.infra.hubspot.database.model.TokenRequest;
-import com.hubspot.integration.crm_connector.infra.hubspot.database.model.mapper.TokenRequestMapper;
+import com.hubspot.integration.crm_connector.infra.hubspot.database.model.mapper.TokenDbMapper;
 import com.hubspot.integration.crm_connector.infra.hubspot.spring.SpringTokenRequestRepository;
 
 /**
@@ -29,11 +29,11 @@ public class TokenRequestRepository implements ITokenRepository {
     @Override
     public TokenBO createToken(TokenBO tokenBO) {
 
-        TokenRequest entity = TokenRequestMapper.toEntity(tokenBO);
+        TokenRequest entity = TokenDbMapper.toEntity(tokenBO);
 
         TokenRequest savedEntity = jpaRepository.save(entity);
 
-        return TokenRequestMapper.toDomain(savedEntity);
+        return TokenDbMapper.toDomain(savedEntity);
 
     }
 
@@ -42,6 +42,6 @@ public class TokenRequestRepository implements ITokenRepository {
 
         Optional<TokenRequest> entityOpt = jpaRepository.findTopByScopeOrderByCreatedAtDesc(scope);
 
-        return entityOpt.map(TokenRequestMapper::toDomain).orElse(null);
+        return entityOpt.map(TokenDbMapper::toDomain).orElse(null);
     }
 }

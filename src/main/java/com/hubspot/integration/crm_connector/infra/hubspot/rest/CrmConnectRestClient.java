@@ -16,7 +16,7 @@ import com.hubspot.integration.crm_connector.infra.hubspot.dto.HubspotContactRes
 @FeignClient(name = "hubspotCrmClient", url = "${hubspot.base-uri}")
 public interface CrmConnectRestClient {
 
-    @PostMapping(value = "/crm/v3/objects/contacts", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(value = "/crm/v3/objects/contacts", consumes = MediaType.APPLICATION_JSON_VALUE)
     HubspotContactResponseDTO createContact(@RequestHeader("Authorization") String token,
             @RequestBody HbPropertiesContactDTO properties);
 
