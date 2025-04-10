@@ -90,3 +90,35 @@ docker-compose up --build
 ⚠️ IMPORTANTE
 ---------------------------------
 Não esqueça de definir corretamente as variáveis de ambiente. A aplicação depende delas para funcionar corretamente (principalmente os dados do HubSpot e do banco).
+
+🚀 Melhorias Futuras
+
+🛡️ Segurança
+Integração com OAuth completo (refresh token): Hoje o fluxo de autenticação está funcional, mas adicionar refresh token deixaria o controle mais robusto.
+
+Rate limiting e proteção contra ataques: Implementar bibliotecas como bucket4j para limitar requisições suspeitas.
+
+📊 Observabilidade
+Adicionar logs estruturados (JSON): Facilita a integração com plataformas como ELK, Datadog ou Grafana.
+
+Monitoramento com Actuator e Prometheus: Para exposição de métricas nativas do Spring Boot.
+
+🧪 Testes
+Cobertura de testes unitários e integração: Ampliar testes com JUnit 5 e Testcontainers para testar integrações reais com o banco e a API da HubSpot.
+
+Mock de webhooks HubSpot com WireMock: Para garantir consistência nos testes automatizados.
+
+🔧 DevOps & Deploy
+Pipeline CI/CD (GitHub Actions, GitLab CI ou Jenkins): Para automatizar testes, builds e deploys.
+
+Deploy com Docker Swarm, Kubernetes ou Heroku: Facilita escalar e subir ambientes.
+
+🧩 Flexibilidade e Configuração
+Uso do Spring Cloud Config: Centralizar e versionar as configurações por ambiente.
+
+Criação de perfis customizados para ambientes de staging/homologação.
+
+🧠 Funcionalidades extras
+Dashboard para visualizar contatos e status de sincronização com HubSpot
+
+Fila de reenvio automático para falhas na integração (ex: Kafka + retry)
