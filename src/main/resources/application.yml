@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: crm-connector
+
+server:
+  port: 3131
+
+hubspot:
+  auth: https://app.hubspot.com/oauth/authorize
+  token: https://api.hubapi.com
+  base-uri: https://api.hubapi.com
+  client-id: 42ba382b-14ab-4fa6-beec-85bd8b767463
+  client-secret: ba47afea-f5db-4bb8-821a-6453d704053f
+  redirect-uri: http://localhost:3131/oauth/callback
+  scope: crm.objects.contacts.write crm.schemas.contacts.write
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: crm
+    password: 1329
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 3131

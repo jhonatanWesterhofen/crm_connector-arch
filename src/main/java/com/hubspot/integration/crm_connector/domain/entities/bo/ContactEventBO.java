@@ -4,11 +4,6 @@ import java.time.LocalDateTime;
 
 import com.hubspot.integration.crm_connector.domain.entities.enums.EnumEvent;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class ContactEventBO {
     private String externalId;
     private String propertyName;
@@ -101,6 +96,46 @@ public class ContactEventBO {
         public ContactEventBO build() {
             return new ContactEventBO(this);
         }
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public String getPropertyName() {
+        return propertyName;
+    }
+
+    public String getPropertyValue() {
+        return propertyValue;
+    }
+
+    public String getChangeSource() {
+        return changeSource;
+    }
+
+    public Long getEventId() {
+        return eventId;
+    }
+
+    public Long getSubscriptionId() {
+        return subscriptionId;
+    }
+
+    public Long getPortalId() {
+        return portalId;
+    }
+
+    public Long getAppId() {
+        return appId;
+    }
+
+    public LocalDateTime getOccurredAt() {
+        return occurredAt;
+    }
+
+    public EnumEvent getEventType() {
+        return eventType;
     }
 
 }

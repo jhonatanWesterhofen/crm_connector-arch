@@ -15,16 +15,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  *
  * @author Jhonatan
  */
 @Entity
-@Getter
-@Setter
 @Table(name = "HB_CONTACT")
 public class Contact {
 
@@ -69,4 +65,109 @@ public class Contact {
 
     @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ContactEvent> events = new ArrayList<>();
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getLifecyclestage() {
+        return lifecyclestage;
+    }
+
+    public void setLifecyclestage(String lifecyclestage) {
+        this.lifecyclestage = lifecyclestage;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public void setExternalId(String externalId) {
+        this.externalId = externalId;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public boolean isSentToHubspot() {
+        return sentToHubspot;
+    }
+
+    public void setSentToHubspot(boolean sentToHubspot) {
+        this.sentToHubspot = sentToHubspot;
+    }
+
+    public List<ContactEvent> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<ContactEvent> events) {
+        this.events = events;
+    }
+
 }

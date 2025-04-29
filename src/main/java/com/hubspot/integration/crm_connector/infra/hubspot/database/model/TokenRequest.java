@@ -15,16 +15,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  *
  * @author Jhonatan
  */
 @Entity
-@Getter
-@Setter
 @Table(name = "HB_TOKEN_REQUEST")
 public class TokenRequest {
 
@@ -52,5 +48,61 @@ public class TokenRequest {
     @CreationTimestamp
     @Column(name = "CREATED_AT", updatable = false)
     private LocalDateTime createdAt;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTokenType() {
+        return tokenType;
+    }
+
+    public void setTokenType(String tokenType) {
+        this.tokenType = tokenType;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
+    public LocalDateTime getExpiresIn() {
+        return expiresIn;
+    }
+
+    public void setExpiresIn(LocalDateTime expiresIn) {
+        this.expiresIn = expiresIn;
+    }
+
+    public EnumScope getScope() {
+        return scope;
+    }
+
+    public void setScope(EnumScope scope) {
+        this.scope = scope;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
 }

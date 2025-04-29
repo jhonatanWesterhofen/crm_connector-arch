@@ -4,13 +4,10 @@ import java.time.LocalDateTime;
 
 import com.hubspot.integration.crm_connector.domain.entities.enums.EnumScope;
 
-import lombok.Getter;
-
 /**
  *
  * @author Jhonatan
  */
-@Getter
 public class TokenBO {
 
     private String accessToken;
@@ -63,4 +60,25 @@ public class TokenBO {
             return new TokenBO(this);
         }
     }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public LocalDateTime getExpiresIn() {
+        return expiresIn;
+    }
+
+    public String getTokenType() {
+        return tokenType;
+    }
+
+    public EnumScope getScope() {
+        return scope;
+    }
+
 }

@@ -2,13 +2,11 @@ package com.hubspot.integration.crm_connector.domain.entities.bo;
 
 import java.util.List;
 
-import lombok.Getter;
-
 /**
  *
  * @author Jhonatan
  */
-@Getter
+
 public class ContactBO {
 
     private String email;
@@ -101,4 +99,45 @@ public class ContactBO {
             return new ContactBO(this);
         }
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public String getLifecyclestage() {
+        return lifecyclestage;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public List<ContactEventBO> getEvent() {
+        return event;
+    }
+
 }

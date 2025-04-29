@@ -66,10 +66,6 @@ URL_CALLBACK=http://localhost:3131/callback
 
 📜 APPLICATION.PROPERTIES
 ---------------------------------
-${SECRET}
-
-spring.datasource.url=jdbc:postgresql://localhost:5433/postgres
-${PASSWORD_DATABASE}
 
 https://app.hubspot.com/oauth/authorize
 https://api.hubapi.com
@@ -80,12 +76,8 @@ ${URL_CALLBACK}
 
 ▶️ COMANDO PARA SUBIR TUDO
 ---------------------------------
-docker-compose up --build
+docker-compose up --build 
 
-🌍 ACESSOS
----------------------------------
-✅ API: http://localhost:3131
-✅ Banco de Dados (Postgres): jdbc:postgresql://localhost:5433/postgres
 
 ⚠️ IMPORTANTE
 ---------------------------------

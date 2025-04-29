@@ -1,14 +1,20 @@
-FROM openjdk:17-alpine
+FROM maven:3.8.4-eclipse-temurin-17 AS build
 
-ENV SERVER_PORT 3131
+COPY src /app/src
+COPY pom.xml /app
 
-# Define o diretório de trabalho dentro do contêiner
+
+WORKDIR /app
+RUN mvn clean install
+
+FROM eclipse-temurin:17-jre-alpine
+
+COPY --from=build /app/target/crm-connector-0.0.1-SNAPSHOT.jar /app/app.jar
+
+
+
 WORKDIR /app
 
-# Copia o arquivo JAR da sua aplicação para o contêiner
-COPY target/crm-connector-0.0.1-SNAPSHOT.jar .
+EXPOSE 3131
 
-# Expose a porta da aplicação
-EXPOSE $SERVER_PORT
-# Executa a aplicação
-CMD ["java", "-jar", "crm-connector-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]
